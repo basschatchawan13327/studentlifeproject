@@ -5,22 +5,23 @@ from datetime import datetime, timedelta
 
 DATA_FILE = "student_life.json"
 
-student_sessions = []       #empty list to hold data from student_life.json
+student_sessions = [] #empty list to hold data from student_life.json
 assignments = []
 expenses = []
 habits = []
 
+#==================== Data Loading and Saving Functions =========================
 
-def load_data(): #function to load data from student_life.json if it exists, otherwise initializes empty lists
-    global student_sessions, assignments, expenses, habits 
+def load_data():                 #Load data from JSON file or initialize empty lists.
+    global student_sessions, assignments, expenses, habits
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r") as f:
             data = json.load(f)
     
-        student_sessions = data.get("student_sessions",[]) 
-        assignments = data.get("assignments",[]) 
-        expenses = data.get("expenses",[]) 
-        habits = data.get("habits",[]) 
+        student_sessions = data.get("student_sessions",[])
+        assignments = data.get("assignments",[])
+        expenses = data.get("expenses",[])
+        habits = data.get("habits",[])
     else:
         student_sessions = []
         assignments = []
@@ -28,7 +29,7 @@ def load_data(): #function to load data from student_life.json if it exists, oth
         habits = []
     return student_sessions, assignments, expenses, habits
 
-def save_data(student_sessions, assignments, expenses, habits): #function to save data to student_life.json
+def save_data(student_sessions, assignments, expenses, habits):     #saves data to student_life.json
     data = {
         "student_sessions": student_sessions,
         "assignments": assignments,
@@ -38,21 +39,90 @@ def save_data(student_sessions, assignments, expenses, habits): #function to sav
     with open(DATA_FILE, "w") as f:
         json.dump(data, f, ensure_ascii=False, indent = 4)
 
-def get_input(field):   #function to get user input
+#==================== Utility Functions =========================
+
+def get_input(field):                                   
     return input(f"Enter: {field}")
 
-def format_vnd(amount):
-    return f"{int(round(amount)):,}".replace(",", ".")              #function to format number to VND format ex. input 1000000 -> output 1.000.000
+def format_vnd(amount):                                 #function to format VND currency with dot as thousand separator
+    return f"{int(round(amount)):,}".replace(",", ".")
 
-student_sessions, assignments, expenses, habits = load_data()       #initialize loading data from student_life.json
+#==================== Validation Function =========================
 
-while True :
-    print("===Student Life Tracker===\n1. Study\n2. Assignments\3. Expenses\n4. Habits\n5. Weekly Summary\n0. Exit\n")
-    main_choice = get_input("")
+def check_date_format(date_text):                   #function to check if date is in correct format
+    try:
+        datetime.strptime(date_text, "%Y-%m-%d")
+        return True
+    except ValueError:
+        return False
     
-    if main_choice == "0":
-        print("Good bye")
+def check_positive_integer(value):                  #function to check if input is a positive integer
+    try:
+        val = int(value)
+        return val >= 0
+    except ValueError:
+        return False
+    
+def check_non_empty_string(value):                  #function to check if input is a non-empty string
+    return isinstance(value, str) and len(value.strip()) > 0
+
+def check_list_index(index, lst):                   #function to check if input index is valid for a given list
+    try:
+        idx = int(index)
+        return 0 <= idx < len(lst)
+    except ValueError:
+        return False
+    
+def check_integer(value):                           #function to check if input is an integer
+    try:
+        int(value)
+        return True
+    except ValueError:
+        return False
+    
+def check_duration(value):                          #function to check if input duration is a positive integer greater than zero
+    try:
+        val = int(value)
+        return val > 0
+    except ValueError:
+        return False
+    
+def check_amount(value):                            #function to check if input amount is a positive integer greater than zero
+    try:
+        val = int(value)
+        return val > 0
+    except ValueError:
+        return False
+    
+def check_noseperator(value):                       #function to check if input string contains no separator characters
+    separators = ['.', ',', ' ']
+    for sep in separators:
+        if sep in value:
+            return False
+    return True
+
+#==================== Main Program Loop =========================
+# Display main menu and route user to selected feature
+
+student_sessions, assignments, expenses, habits = load_data()           #loading data to lists at the start of the program
+
+while True :                     #main menu loop
+    print("\n===Student Life Tracker===\n1. Study\n2. Assignments\n3. Expenses\n4. Habits\n5. Weekly Summary\n0. Exit\n")
+    main_choice = get_input("")
+    if not check_integer(main_choice):
+        print("Invalid input, Please put a number 0-5.")
+        continue
+    elif main_choice not in ["0", "1", "2", "3", "4", "5"]:
+        print("Invalid choice, Please put a number 0-5.")
+        continue
+
+#==================== Exiting the Program =========================
+
+    if main_choice == "0":                         
+        save_data(student_sessions, assignments, expenses, habits)
+        print("\nGood bye")
         break
+    
 #=================================Khanh part=============================================
 
 #=================================Jenny part=============================================
@@ -99,12 +169,11 @@ while True :
                 print("Count:", h["count"])             
 
     elif main_choice == "5" :
-        print("Enter week start date:(YYYY-MM-DD)")
-        start_date = datetime.strptime(get_input("Enter start date(YYYY-MM-DD)"), "%Y%m%d")
+        start_date = datetime.strptime(get_input("Enter start date(YYYY-MM-DD) "), "%Y%m%d")
         end_date = start_date + timedelta(days=6)
             
         print("Study Summary for week\n")
-        for s in study_sessions:
+        for s in study_sessions:                #study_sessions changed to student_sessions
             session_date = datetime.strptime(s['date'], "%Y%m%d")
             if start_date <= session_date <= end_date:
                 print("\nDate:", s["date"])
@@ -114,7 +183,7 @@ while True :
         print("Assignment Due this week")
         for a in assignments:
             assignment_date = datetime.strptime(a["due_date"], "%Y%m%d")
-            if start_date <= assignment_date <= due_date:
+            if start_date <= assignment_date <= due_date:           #due_date changed to end_date
                     print("Title:", a["title"])
                     print("Due date:", a["due_date"])
                     print("Done:", a["done"])
@@ -128,12 +197,10 @@ while True :
                 print("Category:", e["category"])
                 print("Amount: ", e["amount"])
 
-            print("Habits Stats\n")
+            print("Habits Stats\n")             #wrong indentation fixed line 200-203
             for h in habits:
                 print("Habit:", h["name"])
                 print("Times:", h["count"])
 
-        else:
-            print("Invalid choice")
 #=================================End of Jenny part======================================
     save_data(student_sessions, assignments, expenses, habits) #saving data after each loop iteration
