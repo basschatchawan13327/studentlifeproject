@@ -52,25 +52,35 @@ If you don't have **Python3** on your computer:
 
 1. Download **Python 3 Installer** from link : [Click here](https://www.python.org)
 
-![Downloading Python](https://www.cs.utexas.edu/~scottm/images/cs303e/download_python/python1.png)
+![Downloading Python](pictures/download-python.png)
 
-2. Open **Installer**
+2. Open **Installer** and click **Install Python**
+![Downloading Python](pictures/Install-python.png)
 
-3. Select **"Add Python to PATH"**
+3. Type **"Y"** and press Enter
+![Downloading Python](pictures/Install-python-2.png)
 
-4. Click **Install Now**.
-
-5. Wait until Installation finish and close the windows.
-  
+4. Type **"Y"** if you want to view online help or type **"N"** to close windows and end installation.
+![Downloading Python](pictures/Install-python-3.png)  
 
 If you have **Python3** on your computer already:
 
 1. Open **Command Prompt (Windows)** or **Terminal (MacOS)**
-![5 Ways to Open Terminal on Mac](https://cdn.osxdaily.com/wp-content/uploads/2023/06/open-terminal-spotlight-mac-610x416.jpg)
-*Figure 1: How to open terminal on MacOS.*
 
-![Open Command Prompt (CMD) in Windows 11, Try 7 Easy Ways](https://images.minitool.com/minitool.com/images/uploads/news/2021/07/open-command-prompt-windows-11/open-command-prompt-windows-11-3.jpg)
-*Figure 2: *How to open Command Prompt on Windows 11
+For MacOS :
+
+1. Press **Command key (⌘) + Space Bar** to open Sportlight search
+2. Type **"Terminal"** and press Enter
+![Downloading Python](pictures/terminal.png)
+*Figure 1: How to open Termilnal on MacOS
+
+For Windows : 
+
+1. Press **Windows** to open Menu
+2. Type **"cmd"** and press Enter
+
+![Downloading Python](pictures/cmd.png)
+*Figure 2: How to open Command Prompt on Windows 11
 
 2. Download the project
 
@@ -84,7 +94,7 @@ or
 
 Download by GitHub Website
 
-Click on the green button "<> Code" and download as zip or [Click here](https://github.com/basschatchawan13327/studentlifeproject/archive/refs/heads/main.zip) 
+Click on the **green button "<> Code"** and **download as zip** or [Click here](https://github.com/basschatchawan13327/studentlifeproject/archive/refs/heads/main.zip) 
 
 3. Navigate to the project directory.
 ```
@@ -102,13 +112,51 @@ python3 StudentLifeTracker.py
 ## Testing Summary
 
 - **Main Menu**
-
+![Student Life Tracker Main Menu](pictures/main-menu.png)
 - **Study Session Function**
+![Study Session Main Menu](pictures/study-session.png)
+    - **Add**
+        ![Study Session Add](pictures/study-session-add.png)
+    - **List**
+        ![Study Session List](pictures/study-session-list.png)
+    - **Delete**
+        ![Study Session Delete](pictures/study-session-delete.png)
 - **Assignment Function**
+![Assignment Main Menu](pictures/assignment.png)
+    - **Add**
+        ![Assignment Add](pictures/assignment-add.png)
+    - **List**
+        ![Assignment List](pictures/assignment-list.png)
+    - **Done**
+        ![Assignement Done1](pictures/assignment-done-1.png)
+        Select the index to mark as done :
+        ![Student Life Tracker Main Menu](pictures/assignment-done-2.png)
+        Result :
+        ![Student Life Tracker Main Menu](pictures/assignment-done-3.png)
+    - **Delete**
+        ![Student Life Tracker Main Menu](pictures/assignment-delete-1.png)
+        ![Student Life Tracker Main Menu](pictures/assignment-delete-2.png)
 - **Expenses Function**
+![Student Life Tracker Main Menu](pictures/expense-menu.png)
+    - **Add**
+        ![Student Life Tracker Main Menu](pictures/expense-add.png)
+    - **List**
+        ![Student Life Tracker Main Menu](pictures/expense-list.png)
+    - **Total**
+        ![Student Life Tracker Main Menu](pictures/expense-total.png)
 - **Habits Funtion**
+![Student Life Tracker Main Menu](pictures/habit-menu.png)
+    - **Add**
+    ![Student Life Tracker Main Menu](pictures/habit-add.png)
+    - **Record**
+    ![Student Life Tracker Main Menu](pictures/habit-record.png)
+    - **View Stats**
+    ![Student Life Tracker Main Menu](pictures/habit-stats.png)
 - **Weekly Summaries**
+![Student Life Tracker Main Menu](pictures/weekly-summary.png)
 
 ## Team Members
 
-Chatchawan Jiamprasut **(Project Leader)**
+- Chatchawan Jiamprasut **(Project Leader)**
+- Truong Gia Khanh **(Collaborator 1)**
+- Tran Nguyen Kim Thuy **(Collaborator 2)**
