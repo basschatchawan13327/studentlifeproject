@@ -122,48 +122,89 @@ python3 StudentLifeTracker.py
 ## Testing Summary
 
 - **Main Menu**
+  
   ![Student Life Tracker Main Menu](pictures/main-menu.png)
 
 - **Study Session Function**
+  
   ![Study Session Main Menu](pictures/study-session.png)
+  
     - **Add**
+      
       ![Study Session Add](pictures/study-session-add.png)
+      
     - **List**
+      
       ![Study Session List](pictures/study-session-list.png)
+      
     - **Delete**
+      
       ![Study Session Delete](pictures/study-session-delete.png)
+      
 - **Assignment Function**
+  
   ![Assignment Main Menu](pictures/assignment.png)
+  
     - **Add**
+      
       ![Assignment Add](pictures/assignment-add.png)
+      
     - **List**
+      
       ![Assignment List](pictures/assignment-list.png)
+      
     - **Done**
+      
       ![Assignement Done1](pictures/assignment-done-1.png)
+      
       Select the index to mark as done :
+      
       ![Student Life Tracker Main Menu](pictures/assignment-done-2.png)
+      
       Result :
+      
       ![Student Life Tracker Main Menu](pictures/assignment-done-3.png)
+      
     - **Delete**
+      
       ![Student Life Tracker Main Menu](pictures/assignment-delete-1.png)
+      
       ![Student Life Tracker Main Menu](pictures/assignment-delete-2.png)
+      
 - **Expenses Function**
+  
   ![Student Life Tracker Main Menu](pictures/expense-menu.png)
+  
     - **Add**
+      
       ![Student Life Tracker Main Menu](pictures/expense-add.png)
+      
     - **List**
+      
       ![Student Life Tracker Main Menu](pictures/expense-list.png)
+      
     - **Total**
+      
       ![Student Life Tracker Main Menu](pictures/expense-total.png)
+      
 - **Habits Funtion**
+  
   ![Student Life Tracker Main Menu](pictures/habit-menu.png)
+  
     - **Add**
+      
       ![Student Life Tracker Main Menu](pictures/habit-add.png)
+      
     - **Record**
+      
       ![Student Life Tracker Main Menu](pictures/habit-record.png)
+      
     - **View Stats**
+      
       ![Student Life Tracker Main Menu](pictures/habit-stats.png)
+      
 - **Weekly Summaries**
+  
   ![Student Life Tracker Main Menu](pictures/weekly-summary.png)
 
 ## Team Members
