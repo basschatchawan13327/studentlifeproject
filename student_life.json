@@ -1,16 +1,5 @@
 {
-    "student_sessions": [
-        {
-            "date": "29012003",
-            "subject": "Eng",
-            "duration": "30mins"
-        },
-        {
-            "date": "28041990",
-            "subject": "Thai",
-            "duration": "30mins"
-        }
-    ],
+    "student_sessions": [],
     "assignments": [],
     "expenses": [],
     "habits": []
