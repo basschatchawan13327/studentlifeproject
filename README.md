@@ -1,4 +1,4 @@
-# studentlifeproject# Student Life Tracker
+#Student Life Tracker
 Student Life Tracker is **a command-line Python application** designed to help students manage their daily academic and personal activities.
 
 The program allows users to record and track:
