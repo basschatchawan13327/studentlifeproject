@@ -54,15 +54,22 @@ If you don't have **Python3** on your computer:
 
 ![Downloading Python](pictures/download-python.png)
 
+---
 2. Open **Installer** and click **Install Python**
+ 
 ![Downloading Python](pictures/Install-python.png)
 
+---
 3. Type **"Y"** and press Enter
+
 ![Downloading Python](pictures/Install-python-2.png)
 
+---
 4. Type **"Y"** if you want to view online help or type **"N"** to close windows and end installation.
+   
 ![Downloading Python](pictures/Install-python-3.png)  
 
+---
 If you have **Python3** on your computer already:
 
 1. Open **Command Prompt (Windows)** or **Terminal (MacOS)**
@@ -71,9 +78,11 @@ For MacOS :
 
 1. Press **Command key (⌘) + Space Bar** to open Sportlight search
 2. Type **"Terminal"** and press Enter
+
 ![Downloading Python](pictures/terminal.png)
 *Figure 1: How to open Termilnal on MacOS
 
+---
 For Windows : 
 
 1. Press **Windows** to open Menu
@@ -82,6 +91,7 @@ For Windows :
 ![Downloading Python](pictures/cmd.png)
 *Figure 2: How to open Command Prompt on Windows 11
 
+---
 2. Download the project
 
 Download by Git enter this command:
@@ -112,48 +122,49 @@ python3 StudentLifeTracker.py
 ## Testing Summary
 
 - **Main Menu**
-![Student Life Tracker Main Menu](pictures/main-menu.png)
+  ![Student Life Tracker Main Menu](pictures/main-menu.png)
+
 - **Study Session Function**
-![Study Session Main Menu](pictures/study-session.png)
+  ![Study Session Main Menu](pictures/study-session.png)
     - **Add**
-        ![Study Session Add](pictures/study-session-add.png)
+      ![Study Session Add](pictures/study-session-add.png)
     - **List**
-        ![Study Session List](pictures/study-session-list.png)
+      ![Study Session List](pictures/study-session-list.png)
     - **Delete**
-        ![Study Session Delete](pictures/study-session-delete.png)
+      ![Study Session Delete](pictures/study-session-delete.png)
 - **Assignment Function**
-![Assignment Main Menu](pictures/assignment.png)
+  ![Assignment Main Menu](pictures/assignment.png)
     - **Add**
-        ![Assignment Add](pictures/assignment-add.png)
+      ![Assignment Add](pictures/assignment-add.png)
     - **List**
-        ![Assignment List](pictures/assignment-list.png)
+      ![Assignment List](pictures/assignment-list.png)
     - **Done**
-        ![Assignement Done1](pictures/assignment-done-1.png)
-        Select the index to mark as done :
-        ![Student Life Tracker Main Menu](pictures/assignment-done-2.png)
-        Result :
-        ![Student Life Tracker Main Menu](pictures/assignment-done-3.png)
+      ![Assignement Done1](pictures/assignment-done-1.png)
+      Select the index to mark as done :
+      ![Student Life Tracker Main Menu](pictures/assignment-done-2.png)
+      Result :
+      ![Student Life Tracker Main Menu](pictures/assignment-done-3.png)
     - **Delete**
-        ![Student Life Tracker Main Menu](pictures/assignment-delete-1.png)
-        ![Student Life Tracker Main Menu](pictures/assignment-delete-2.png)
+      ![Student Life Tracker Main Menu](pictures/assignment-delete-1.png)
+      ![Student Life Tracker Main Menu](pictures/assignment-delete-2.png)
 - **Expenses Function**
-![Student Life Tracker Main Menu](pictures/expense-menu.png)
+  ![Student Life Tracker Main Menu](pictures/expense-menu.png)
     - **Add**
-        ![Student Life Tracker Main Menu](pictures/expense-add.png)
+      ![Student Life Tracker Main Menu](pictures/expense-add.png)
     - **List**
-        ![Student Life Tracker Main Menu](pictures/expense-list.png)
+      ![Student Life Tracker Main Menu](pictures/expense-list.png)
     - **Total**
-        ![Student Life Tracker Main Menu](pictures/expense-total.png)
+      ![Student Life Tracker Main Menu](pictures/expense-total.png)
 - **Habits Funtion**
-![Student Life Tracker Main Menu](pictures/habit-menu.png)
+  ![Student Life Tracker Main Menu](pictures/habit-menu.png)
     - **Add**
-    ![Student Life Tracker Main Menu](pictures/habit-add.png)
+      ![Student Life Tracker Main Menu](pictures/habit-add.png)
     - **Record**
-    ![Student Life Tracker Main Menu](pictures/habit-record.png)
+      ![Student Life Tracker Main Menu](pictures/habit-record.png)
     - **View Stats**
-    ![Student Life Tracker Main Menu](pictures/habit-stats.png)
+      ![Student Life Tracker Main Menu](pictures/habit-stats.png)
 - **Weekly Summaries**
-![Student Life Tracker Main Menu](pictures/weekly-summary.png)
+  ![Student Life Tracker Main Menu](pictures/weekly-summary.png)
 
 ## Team Members
 
