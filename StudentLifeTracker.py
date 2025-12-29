@@ -136,85 +136,345 @@ while True :                     #main menu loop
         save_data(student_sessions, assignments, expenses, habits)
         print("\nGood bye")
         break
-#=================================Khanh part=============================================
+    
+#==================== Study Session Menu =========================
 
-#=================================Jenny part=============================================
-    elif main_choice == "3" :                                    
-        print("1. Add\n2. List\n3. Total\n")
-        e_choice = get_input("Enter your choice: ")
+    elif main_choice == "1":
+        print("=====Study Session Tracker=====\n")                         
+        print("1.Add\n2.List\n3.Delete\n4.Back\n")
+        while True:                 
+            s_choice = get_input("")
+            if not check_integer(s_choice):
+                print("Invalid input, Please put a number 1-4.")
+                continue
+            elif s_choice not in ["1", "2", "3", "4"]:
+                print("Invalid choice, Please put a number 1-4.")
+                continue
+            else:
+                break
 
-        if e_choice == "1" :
-            date = get_input("Date (YYYY-MM-DD): ")
-            category = get_input("Amount (VND): ")    
-            amount = get_input("Category: ")
-            expenses.append ({"date": date, "amount":amount, "category": category})
+        if s_choice == "1":
+            print("=====Adding a new study session=====\n")                        
+            while True:                 
+                date = get_input("Date (YYYY-MM-DD): ")
+                if not check_date_format(date):
+                    print("Invalid date format or input, Please enter YYYY-MM-DD.")
+                    continue
 
-        elif e_choice == "2" :
+                subject = get_input("Subject: ")
+                if not check_non_empty_string(subject):
+                    print("Invalid subject input, Please enter a non-empty string.")
+                    continue
+
+                duration = get_input("Duration (in minutes): ")           
+                if not check_integer(duration):
+                    print("Invalid duration input, Please enter an integer.")
+                    continue
+                elif not check_positive_integer(duration):
+                    print("Duration must be a positive integer.")
+                    continue
+                elif check_duration(duration) == False:
+                    print("Duration must be greater than zero.")
+                    continue
+                duration = int(duration)
+
+                student_sessions.append({"date": date, 
+                                     "subject": subject, 
+                                     "duration": duration})
+                break
+
+        elif s_choice == "2":
+            print("=====Listing all study sessions=====\n")                         
+            for s in student_sessions:
+                print("\nDate: ", s["date"])
+                print("Subject: ", s["subject"])
+                print("Duration: ", s["duration"]//60, "Hrs", s["duration"]%60, "mins\n")
+                print("-" * 20)
+
+        elif s_choice == "3":
+            print("=====Deleting a study session=====\n")                         
+            for s in student_sessions:              
+                print("\nIndex: ", student_sessions.index(s))
+                print("Date: ", s["date"])
+                print("Subject: ", s["subject"])
+                print("Duration: ", s["duration"]//60, "Hrs", s["duration"]%60, "mins\n")
+                print("-" * 20)
+
+            index = get_input("index to delete (Press Enter to cancel): ")
+            if index == "":
+                print("Cancelled deletion")
+            elif not check_integer(index):
+                print("Invalid input please enter a number")
+            elif not check_list_index(index, student_sessions):
+                print("Invalid index")
+            else:
+                del student_sessions[int(index)]
+
+        elif s_choice == "4":
+            print("Returning to main menu\n")
+            continue
+
+#==================== Assignments Menu =========================
+
+    elif main_choice == "2":
+        print("=====Assignment Tracker=====\n")                        
+        print("1.Add\n2.List\n3.Complete\n4.Delete\n5.Back\n")
+        while True:                 
+            a_choice = get_input("")
+            if not check_integer(a_choice):
+                print("Invalid input, Please put a number 1-5.")
+                continue
+            elif a_choice not in ["1", "2", "3", "4", "5"]:
+                print("Invalid choice, Please put a number 1-5.")
+                continue
+            else:
+                break
+
+        if a_choice == "1":
+            print("=====Adding a new assignment=====\n")
+            while True:                         
+                title = get_input("Assignment Title: ")
+                if not check_non_empty_string(title):
+                    print("Assignment name can't be blank")
+                    continue
+                due_date = get_input("Due Date (YYYY-MM-DD): ")
+                if not check_date_format(due_date):
+                    print("Invalid date format or input, Please enter YYYY-MM-DD.")
+                    continue
+                assignments.append({"title": title, 
+                                    "due_date": due_date, 
+                                    "Done": False})
+                break
+
+        elif a_choice == "2":
+            print("=====Listing all assignments=====\n")                         
+            for a in assignments:
+                print("\nTitle: ", a["title"])
+                print("Due Date: ", a["due_date"])
+                print("Done: ", a["Done"], "\n")
+                print("-" * 20)
+
+        elif a_choice == "3":
+            print("=====Marking an assignment as complete=====\n")
+            for a in assignments:              
+                print("\nIndex: ", assignments.index(a))
+                print("Title: ", a["title"])
+                print("Due Date: ", a["due_date"])
+                print("Done: ", a["Done"], "\n")
+                print("-" * 20)
+
+            index = get_input("Index to mark as complete: ")
+            if not check_integer(index):
+                print("Invalid input please enter a number")
+            elif not check_list_index(index, assignments):
+                print("Invalid index")
+            else:
+                assignments[int(index)]["Done"] = True
+
+        elif a_choice == "4":
+            print("=====Deleting an assignment=====\n")                         
+            for a in assignments:                     
+                print("\nIndex: ", assignments.index(a))
+                print("Title: ", a["title"])
+                print("Due Date: ", a["due_date"])
+                print("Done: ", a["Done"], "\n")
+                print("-" * 20)
+
+            index = get_input("Index to delete (Press Enter to cancel): ")
+            if index == "":
+                print("Cancelled deletion")
+            elif not check_integer(index):
+                print("Invalid input please enter a number")
+            elif not check_list_index(index, assignments):
+                print("Invalid index")
+            else:
+                del assignments[int(index)]
+
+        elif a_choice == "5":
+            print("Returning to main menu\n")
+            continue
+
+#==================== Expenses Menu =========================
+
+    elif main_choice == "3":
+        print("=====Expense Tracker=====\n")                        
+        print("1.Add\n2.List\n3.Total\n4.Back\n")
+        while True:                 
+            e_choice = get_input("")
+            if not check_integer(e_choice):
+                print("Invalid input, Please put a number 1-4.")
+                continue
+            elif e_choice not in ["1", "2", "3", "4"]:
+                print("Invalid choice, Please put a number 1-4.")
+                continue
+            else:
+                break
+
+        if e_choice == "1":
+            print("=====Adding a new expense=====\n")
+            while True:                         
+                date = get_input("Date (YYYY-MM-DD): ")
+                if not check_date_format(date):
+                    print("Invalid date format or input, Please enter YYYY-MM-DD.")
+                    continue
+
+                amount = get_input("Amount (VND): ")
+                if not check_noseperator(str(amount)):
+                    print("Amount must not contain separator characters ( . / , / space ).")
+                    continue
+                elif not check_integer(amount):
+                    print("Invalid amount input, Please enter an integer.")
+                    continue
+                elif not check_positive_integer(amount):
+                    print("Amount must be a positive integer.")
+                    continue
+                elif check_amount(amount) == False:
+                    print("Amount must be greater than zero.")
+                    continue
+
+
+                category = get_input("Category: ")
+                if not check_non_empty_string(category):
+                    print("Invalid category input, Please enter a non-empty string.")
+                    continue
+
+                expenses.append({"date": date, 
+                                 "amount": int(amount), 
+                                 "category": category})
+                break
+            
+        elif e_choice == "2":
+            print("=====Listing all expenses=====\n")                         
             for e in expenses:
-                print("\nDate:", e["date"])
-                print("Category:", e["category"])
-                print("Amount: ", e["amount"])                     
+                print("\nDate: ", e["date"])
+                print("Amount: ", format_vnd(e["amount"]), " VND")
+                print("Category: ", e["category"])
+                print("-" * 20)
 
-        elif e_choice == "3" :
+        elif e_choice == "3":
+            print("=====Summarizing Expenses=====\n")                         
             total = 0
             for e in expenses:
                 total = total + e["amount"]
-                print("Total Expenses:  " , format_vnd(total), "VND")
+            print("Total Expenses: ", format_vnd(total), " VND")
+            print("-" * 20)
 
-    elif main_choice == "4" :
-        print("1. Add Habit\n2. Record Today\n3. View Stats\n")
-        h_choice = get_input("")
+        elif e_choice == "4":
+            print("Returning to main menu\n")
+            continue
 
-        if h_choice == "1" :
-            habit_name = input("habit_name: ")
-            habits.append ({"name": habit_name, "count": 0})
+#==================== Habits Menu =========================
 
-        elif h_choice == "2" :
-            index = int(get_input("Index to record: "))
-            if  0 <= index < len(habits):
-                habits[index]["count"] += 1
+    elif main_choice == "4":
+        print("=====Habit Tracker=====\n")                        
+        print("1.Add Habit\n2.Record Today\n3.View Stats\n4.Back\n")
+
+        while True:                 
+            h_choice = get_input("")
+            if not check_integer(h_choice):
+                print("Invalid input, Please put a number 1-4.")
+                continue
+            elif h_choice not in ["1", "2", "3", "4"]:
+                print("Invalid choice, Please put a number 1-4.")
+                continue
             else:
-                print("Invalid index")
+                break
 
-        elif h_choice == "3" :
-            for h in habits:
-                print("\nName:", h["name"])
-                print("Count:", h["count"])             
-
-    elif main_choice == "5" :
-        start_date = datetime.strptime(get_input("Enter start date(YYYY-MM-DD) "), "%Y%m%d")
-        end_date = start_date + timedelta(days=6)
+        if h_choice == "1":
+            print("=====Adding a new habit=====\n")
+            while True:                         
+                habit_name = get_input("Habit Name: ")
+                if not check_non_empty_string(habit_name):
+                    print("Invalid habit name, Please enter a non-empty string.")
+                    continue
+                else:
+                    habits.append({"name": habit_name, 
+                                   "count": 0})
+                    break
             
-        print("Study Summary for week\n")
-        for s in student_sessions:
-            session_date = datetime.strptime(s['date'], "%Y%m%d")
-            if start_date <= session_date <= end_date:
-                print("\nDate:", s["date"])
-                print("Subject:", s["subject"])
-                print("Duration:", s["duration"])
+        elif h_choice == "2":
+            print("=====Recording Today's Habit=====\n")
+            for h in habits:                      
+                print("\nIndex: ", habits.index(h))
+                print("Habit: ", h["name"])
+                print("Count: ", h["count"], "\n")
+                print("-" * 20)
 
-        print("Assignment Due this week")
-        for a in assignments:
-            assignment_date = datetime.strptime(a["due_date"], "%Y%m%d")
-            if start_date <= assignment_date <= end_date:
-                    print("Title:", a["title"])
-                    print("Due date:", a["due_date"])
-                    print("Done:", a["done"])
+            while True:                         
+                index = get_input("Index to record today: ")
+                if not check_integer(index):
+                    print("Invalid input please enter a number")
+                    continue
+                elif not check_list_index(index, habits):
+                    print("Invalid index")
+                    continue
+                else:
+                    habits[int(index)]["count"] += 1
+                    break
 
-        print("Expenses Summary for week")
-        total_week = 0
-        for e in expenses:
-            expense_date = datetime.strptime(e["date"], "%Y%m%d")
-            if start_date <= expense_date <= end_date:
-                print("\nDate:", e["date"])
-                print("Category:", e["category"])
-                print("Amount: ", e["amount"])
-
-            print("Habits Stats\n")
+        elif h_choice == "3":
+            print("=====Viewing Habit Stats=====\n")                         
+            
             for h in habits:
-                print("Habit:", h["name"])
-                print("Times:", h["count"])
+                print("\nHabit: ", h["name"])
+                print("Count: ", h["count"])
+                print("-" * 20)
 
-#=================================End of Jenny part======================================
+        elif h_choice == "4":               
+            print("Returning to main menu\n")
+            continue
+
+#==================== Viewing Weekly Summary =========================
+# Show study, assignment, expense, and habit data for selected week
+
+    elif main_choice == "5":
+        print("=====Weekly Summary=====\n")                     
+        while True:                
+            start_date = get_input("Enter start date (YYYY-MM-DD): ")
+            if not check_date_format(start_date):
+                print("Invalid date format or input, Please enter YYYY-MM-DD.")
+                continue
+            else:
+                break
+        start_date = datetime.strptime(start_date, "%Y-%m-%d")
+        end_date = start_date + timedelta(days=6)
+
+        print("-" * 20)
+        print("\nStudy Summary for week\n")                 
+        for s in student_sessions:                  
+            session_date = datetime.strptime(s["date"], "%Y-%m-%d")
+            if start_date <= session_date <= end_date:
+                print("Date: ", s["date"])
+                print("Subject: ", s["subject"])
+                print("Duration: ", s["duration"]//60, "Hrs", s["duration"]%60, "mins\n")
+        print("-" * 20)
+
+        print("Assignment Summary for week\n")
+        for a in assignments:                       
+            due_date = datetime.strptime(a["due_date"], "%Y-%m-%d")
+            if start_date <= due_date <= end_date:
+                print("Title: ", a["title"])
+                print("Due Date: ", a["due_date"])
+                print("Done: ", a["Done"], "\n")
+        print("-" * 20)
+
+        print("Expense Summary for week\n")
+        total_week = 0
+        for e in expenses:                          
+            expense_date = datetime.strptime(e["date"], "%Y-%m-%d")
+            if start_date <= expense_date <= end_date:
+                print("Date: ", e["date"])
+                print("Amount: ", format_vnd(e["amount"]), "VND")
+                print("Category: ", e["category"], "\n")
+                total_week = total_week + int(e["amount"])
+        print("Weekly Total Expenses: ", format_vnd(total_week), "VND\n")
+        print("-" * 20)
+
+        print("Habit Stats\n")
+        for h in habits:                          
+            print("Habit: ", h["name"])
+            print("Count: ", h["count"], "Times\n" )
+        print("-" * 20)
+
     save_data(student_sessions, assignments, expenses, habits) #saving data after each loop iteration
 
