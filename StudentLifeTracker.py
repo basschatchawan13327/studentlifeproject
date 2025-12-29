@@ -173,7 +173,7 @@ while True :                     #main menu loop
         end_date = start_date + timedelta(days=6)
             
         print("Study Summary for week\n")
-        for s in study_sessions:                #study_sessions changed to student_sessions
+        for s in student_sessions:
             session_date = datetime.strptime(s['date'], "%Y%m%d")
             if start_date <= session_date <= end_date:
                 print("\nDate:", s["date"])
@@ -183,7 +183,7 @@ while True :                     #main menu loop
         print("Assignment Due this week")
         for a in assignments:
             assignment_date = datetime.strptime(a["due_date"], "%Y%m%d")
-            if start_date <= assignment_date <= due_date:           #due_date changed to end_date
+            if start_date <= assignment_date <= end_date:
                     print("Title:", a["title"])
                     print("Due date:", a["due_date"])
                     print("Done:", a["done"])
@@ -197,7 +197,7 @@ while True :                     #main menu loop
                 print("Category:", e["category"])
                 print("Amount: ", e["amount"])
 
-            print("Habits Stats\n")             #wrong indentation fixed line 200-203
+            print("Habits Stats\n")
             for h in habits:
                 print("Habit:", h["name"])
                 print("Times:", h["count"])
