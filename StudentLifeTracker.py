@@ -12,21 +12,35 @@ habits = []
 
 #==================== Data Loading and Saving Functions =========================
 
-def load_data():                 #Load data from JSON file or initialize empty lists.
+def load_data():  # Load data from JSON file or initialize empty lists
     global student_sessions, assignments, expenses, habits
+
+    default_data = {
+        "student_sessions": [],
+        "assignments": [],
+        "expenses": [],
+        "habits": []
+    }
+
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r") as f:
-            data = json.load(f)
-    
-        student_sessions = data.get("student_sessions",[])
-        assignments = data.get("assignments",[])
-        expenses = data.get("expenses",[])
-        habits = data.get("habits",[])
+            try:
+                data = json.load(f)
+            except json.JSONDecodeError:
+                data = {}
     else:
-        student_sessions = []
-        assignments = []
-        expenses = []
-        habits = []
+        data = {}
+
+    # fill missing keys with default empty lists
+    for key, value in default_data.items():
+        if key not in data:
+            data[key] = value
+
+    student_sessions = data["student_sessions"]
+    assignments = data["assignments"]
+    expenses = data["expenses"]
+    habits = data["habits"]
+
     return student_sessions, assignments, expenses, habits
 
 def save_data(student_sessions, assignments, expenses, habits):     #saves data to student_life.json
